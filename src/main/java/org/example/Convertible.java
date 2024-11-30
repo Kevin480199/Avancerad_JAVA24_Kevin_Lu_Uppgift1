@@ -16,6 +16,13 @@ public class Convertible extends Vehicle {
         System.out.println("Seat heater on");
     }
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Convertible convertible = (Convertible) obj;
+        return seats == convertible.seats && getModel().equals(convertible.getModel()) && getRegNumber().equals(convertible.getRegNumber());
+    }
+    @Override
     public void rent() {
         count--;
         System.out.println("Rent");

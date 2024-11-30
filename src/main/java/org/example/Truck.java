@@ -16,6 +16,13 @@ public class Truck extends Vehicle {
         System.out.println("Car locked");
     }
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Truck truck = (Truck) obj;
+        return doors == truck.doors && getModel().equals(truck.getModel()) && getRegNumber().equals(truck.getRegNumber());
+    }
+    @Override
     public void rent() {
         count--;
         System.out.println("Rent");
