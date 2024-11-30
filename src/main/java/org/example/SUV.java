@@ -2,8 +2,10 @@ package org.example;
 
 public class SUV extends Vehicle {
     private int year;
-    public SUV(String model, String regNumber, double price, int year) {
-        super(model, regNumber, price);
+    private double price = 750;
+    static int count = 5;
+    public SUV(String model, String regNumber, int year) {
+        super(model, regNumber);
         this.year = year;
 
     }
@@ -12,5 +14,22 @@ public class SUV extends Vehicle {
     }
     public void ligthsOn(){
         System.out.println("Ligths on");
+    }
+
+    @Override
+    public void rent() {
+        count--;
+        System.out.println("Rent");
+    }
+
+    @Override
+    public double costs(int hours) {
+        return hours*price;
+    }
+
+    @Override
+    public void returnVehicle() {
+        count++;
+        System.out.println("Return");
     }
 }
