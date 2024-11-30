@@ -1,12 +1,19 @@
 package org.example;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Rentable{
     private String Model;
     private String regNumber;
-    private double price;
-    Vehicle(String model, String regNumber, double price) {
+
+    Vehicle(String model, String regNumber) {
         this.Model = model;
         this.regNumber = regNumber;
-        this.price = price;
+
     }
+    public String getModel() {
+        return Model;
+    }
+    public String getRegNumber() {
+        return regNumber;
+    }
+
 }
