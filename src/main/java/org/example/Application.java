@@ -25,10 +25,11 @@ public class Application {
                 case 1:
                     rentOrReturn();
                     option = scanner.nextInt();
+                    Car target = new Car("BMW","123 ABC", 4);
                     switch(option){
                         case 1:
+                            
                             if (Car.count > 0){
-                                Car target = new Car("BMW","123 ABC", 4);
                                 int index = carForRent.indexOf(target);
                                 carForRent.get(index).rent();
                                 carForRent.remove(index);
@@ -39,11 +40,28 @@ public class Application {
                             }
                             break;
                         case 2:
-                            Car target = new Car("BMW","123 ABC", 4);
-                            int index = rentedVehicles.indexOf(target);
-                            rentedVehicles.get(index).returnVehicle();
-                            rentedVehicles.remove(index);
-                            carForRent.add(target);
+                            if (Car.count > 0){
+                                System.out.println("The car hasn't been rented");
+                            }else{
+                                int index = rentedVehicles.indexOf(target);
+                                rentedVehicles.get(index).returnVehicle();
+                                rentedVehicles.remove(index);
+                                carForRent.add(target);
+                            }
+
+                            break;
+                        case 3:
+                            System.out.println("How long do you want to rent?");
+                            int hour = scanner.nextInt();
+                            if (carForRent.contains(target)){
+                                int index = carForRent.indexOf(target);
+                                double price = carForRent.get(index).costs(hour);
+                                System.out.println("The price for " + hour + " hour is " + price);
+                            }else{
+                                int index = rentedVehicles.indexOf(target);
+                                double price = rentedVehicles.get(index).costs(hour);
+                                System.out.println("The price for " + hour + " hour is " + price);
+                            }
 
                     }
 
@@ -68,6 +86,7 @@ public class Application {
     private void rentOrReturn() {
         System.out.println("1.Rent");
         System.out.println("2.Return");
+        System.out.println("3.Cost");
 
     }
 }
