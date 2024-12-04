@@ -1,16 +1,16 @@
 package org.example;
 
 public abstract class Vehicle implements Rentable{
-    private String Model;
+    private String model;
     private String regNumber;
 
     Vehicle(String model, String regNumber) {
-        this.Model = model;
+        this.model = model;
         this.regNumber = regNumber;
 
     }
     public String getModel() {
-        return Model;
+        return model;
     }
     public String getRegNumber() {
         return regNumber;
